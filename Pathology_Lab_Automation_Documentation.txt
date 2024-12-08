@@ -1,0 +1,53 @@
+
+Pathology Lab Automation Assessment
+
+1. How to Run the Tests
+
+Prerequisites
+- Ensure the following are installed on your system:
+  - Java JDK (8 or later)
+  - Maven (for dependency management)
+  - Google Chrome and ChromeDriver (compatible with your Chrome version).
+- Clone the project repository from the provided GitHub link.
+
+Steps to Execute
+1. Download and configure the ChromeDriver:
+   - Ensure that the chromedriver.exe path is correctly specified in the code where the driver is initialized.
+   - Example in the test scripts:
+     System.setProperty("webdriver.chrome.driver", "C:/path/to/chromedriver.exe");
+2. Open the project in your preferred IDE (e.g., Eclipse or IntelliJ IDEA).
+3. Run the test suite:
+   - Open the testng.xml file in the root directory.
+   - Right-click and run it as a TestNG Suite.
+4. Test results will be available in the IDE console and the test-output folder as an HTML report.
+
+2. Test Structure and Approach
+
+Framework
+- Framework Used: Page Object Model (POM) with TestNG for structured test case organization.
+- Tools:
+  - Selenium WebDriver for browser automation.
+  - TestNG for test case management.
+  - Maven for dependency management.
+
+Pages Created
+1. LoginPage: Automates login actions and validations.
+2. HomePage: Verifies todos and provides navigation to other features.
+3. PatientModulePage: Adds patient details and validates the "Add Patient" functionality.
+4. CostCalculatorPage: Automates interactions with the blood test cost calculator.
+
+Challenges Faced
+1. Dynamic XPath Creation:
+   - Dynamic elements in dropdowns required creating robust XPath selectors using multiple attributes.
+   - Example:
+     //span[text()='Add Tests']//ancestor::div[1]//parent::div[1]//parent::div[1]//following-sibling::div//button[2]
+2. Dropdown Handling:
+   - Dropdown elements would disappear when trying to locate specific options. Resolved using Actions class for mouse interactions.
+3. Thread.sleep:
+   - Used temporary Thread.sleep() in some cases due to application-specific delays. Aware that this is not a standard practice.
+
+3. GitHub Repository
+- The source code for this project is hosted on GitHub: https://github.com/sanketpande1947/PathologyKennectAssessment.
+
+Summary
+The test scripts cover the key functionalities of the Pathology Lab Management web application, including login validation, viewing todos, adding patients, and using the cost calculator. The tests are organized in a modular way using the Page Object Model, making the code reusable and maintainable. The challenges faced during automation were resolved through dynamic locators and action-based interactions.
